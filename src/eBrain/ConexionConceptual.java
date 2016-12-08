@@ -10,6 +10,7 @@ package eBrain;
  * @author luigy
  */
 public class ConexionConceptual {
+    private String id;
     private int importancia;
     private Palabra cabeza;
     private Palabra cola;
@@ -17,10 +18,11 @@ public class ConexionConceptual {
     public ConexionConceptual() {
     }
 
-    public ConexionConceptual(int importancia, Palabra cabeza, Palabra cola) {
+    public ConexionConceptual(String id,int importancia, Palabra cabeza, Palabra cola) {
         this.importancia = importancia;
         this.cabeza = cabeza;
         this.cola = cola;
+        this.id = id;
     }
 
     public int getImportancia() {
@@ -46,6 +48,12 @@ public class ConexionConceptual {
     public void setCola(Palabra cola) {
         this.cola = cola;
     }
+
+    public String getId() {
+        return id;
+    }
+    
+    
 
     @Override
     public String toString() {

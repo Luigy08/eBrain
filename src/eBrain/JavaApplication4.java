@@ -5,6 +5,8 @@
  */
 package eBrain;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author luigy
@@ -16,6 +18,7 @@ public class JavaApplication4 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
     }
     
 }
