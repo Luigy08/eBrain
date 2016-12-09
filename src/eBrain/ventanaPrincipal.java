@@ -6,6 +6,7 @@
 package eBrain;
 
 import java.util.LinkedList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,6 +46,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         sp_add_prioridad = new javax.swing.JSpinner();
         bt_add_mapa = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -69,6 +72,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel7.setText("Palabra");
 
         jButton1.setText("AGREGAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("____________________________________________________________");
 
@@ -78,7 +86,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel10.setText("Relaciones");
 
-        jLabel11.setText("-------->");
+        cb_add_palabra1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_add_palabra1ActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("---------->");
 
         jLabel12.setText("Prioridad");
 
@@ -91,6 +105,15 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 bt_add_mapaActionPerformed(evt);
             }
         });
+
+        jButton2.setText("AGREGAR MAPA MENTAL");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("FINALIZAR");
 
         javax.swing.GroupLayout jd_mapaMentalLayout = new javax.swing.GroupLayout(jd_mapaMental.getContentPane());
         jd_mapaMental.getContentPane().setLayout(jd_mapaMentalLayout);
@@ -117,19 +140,22 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                                     .addComponent(jLabel9)))))
                     .addGroup(jd_mapaMentalLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(jd_mapaMentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel10)
-                            .addGroup(jd_mapaMentalLayout.createSequentialGroup()
-                                .addComponent(cb_add_palabra1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cb_add_palabra2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jd_mapaMentalLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sp_add_prioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(bt_add_mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jd_mapaMentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3)
+                            .addGroup(jd_mapaMentalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel10)
+                                .addGroup(jd_mapaMentalLayout.createSequentialGroup()
+                                    .addComponent(cb_add_palabra1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel11)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(cb_add_palabra2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jd_mapaMentalLayout.createSequentialGroup()
+                                    .addComponent(jLabel12)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(sp_add_prioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(bt_add_mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_mapaMentalLayout.setVerticalGroup(
@@ -159,7 +185,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                     .addComponent(sp_add_prioridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_add_mapa)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -316,8 +346,59 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     private void bt_add_mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_add_mapaActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < palabras.size(); i++) {
+            if (palabras.get(i)==this.cb_add_palabra1.getSelectedItem()) {
+                ConexionConceptual conexion=new ConexionConceptual("",Integer.parseInt(this.sp_add_prioridad.getValue()+""),(Palabra)this.cb_add_palabra1.getSelectedItem(),(Palabra)this.cb_add_palabra2.getSelectedItem());
+                palabras.get(i).getAdyacencias().add(conexion);
+            }
+        }
+        this.sp_add_prioridad.setValue(1);
+        this.cb_add_palabra1.setSelectedIndex(0);
+        this.cb_add_palabra2.setSelectedIndex(0);
     }//GEN-LAST:event_bt_add_mapaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        palabras.add(new Palabra(this.tf_add_palabra.getText()));
+        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        for (int i = 0; i < palabras.size(); i++) {
+            modelo.addElement(palabras.get(i));
+        }
+        this.cb_add_palabra1.setModel(modelo);
+        this.tf_add_palabra.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cb_add_palabra1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_add_palabra1ActionPerformed
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        for (int i = 0; i < perfiles.size(); i++) {
+            if (this.cb_add_palabra1.getSelectedItem()!=perfiles.get(i)) {
+                modelo.addElement(perfiles.get(i));
+            }
+        }
+        this.cb_add_palabra2.setModel(modelo);
+    }//GEN-LAST:event_cb_add_palabra1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int a=JOptionPane.showConfirmDialog(this, "Desea finalizar el mapa mental?");
+       // if () {
+       mapaMental mapa=new mapaMental();
+       
+        for (int i = 0; i < palabras.size(); i++) {
+            mapa.addPalabra(palabras.get(i));
+            for (int j = 0; j < palabras.get(i).getAdyacencias().size(); j++) {
+                mapa.addConexion(palabras.get(i).getAdyacencias().get(i));
+            }
+        }
+        perfiles.getLast().getMapamental().add(mapa);
+        palabras.clear();
+        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        this.cb_add_palabra1.setModel(modelo);
+        this.cb_add_palabra2.setModel(modelo);
+        //}
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -362,6 +443,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_add_raza;
     private com.toedter.calendar.JDateChooser dc_add_Fnacimiento;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -388,4 +471,5 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_add_palabra;
     // End of variables declaration//GEN-END:variables
 LinkedList<Perfil>perfiles=new LinkedList();
+LinkedList<Palabra>palabras=new LinkedList();
 }

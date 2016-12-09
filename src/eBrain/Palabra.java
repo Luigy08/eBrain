@@ -18,9 +18,9 @@ public class Palabra {
     public Palabra() {
     }
 
-    public Palabra(String nombre, LinkedList<ConexionConceptual> adyacencias) {
+    public Palabra(String nombre) {
         this.nombre = nombre;
-        this.adyacencias = adyacencias;
+        adyacencias=new LinkedList();
     }
 
     public String getNombre() {
