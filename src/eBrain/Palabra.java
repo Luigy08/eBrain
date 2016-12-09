@@ -14,13 +14,14 @@ import java.util.LinkedList;
 public class Palabra {
     private String nombre;
     private LinkedList<ConexionConceptual> adyacencias;
+    
 
     public Palabra() {
     }
 
     public Palabra(String nombre) {
         this.nombre = nombre;
-        adyacencias=new LinkedList();
+        adyacencias = new LinkedList();
     }
 
     public String getNombre() {

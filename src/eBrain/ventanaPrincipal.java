@@ -46,8 +46,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         cb_add_palabra2 = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         sp_add_prioridad = new javax.swing.JSpinner();
-        bt_add_mapa = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jb_crearRelacion = new javax.swing.JButton();
+        jb_agregarMapaMental = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -100,17 +100,17 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         sp_add_prioridad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
         sp_add_prioridad.setValue(1);
 
-        bt_add_mapa.setText("CREAR RELACION");
-        bt_add_mapa.addActionListener(new java.awt.event.ActionListener() {
+        jb_crearRelacion.setText("CREAR RELACION");
+        jb_crearRelacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_add_mapaActionPerformed(evt);
+                jb_crearRelacionActionPerformed(evt);
             }
         });
 
-        jButton2.setText("AGREGAR MAPA MENTAL");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jb_agregarMapaMental.setText("AGREGAR MAPA MENTAL");
+        jb_agregarMapaMental.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jb_agregarMapaMentalActionPerformed(evt);
             }
         });
 
@@ -155,8 +155,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                                     .addComponent(jLabel12)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(sp_add_prioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(bt_add_mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jb_crearRelacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jb_agregarMapaMental, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_mapaMentalLayout.setVerticalGroup(
@@ -185,9 +185,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(sp_add_prioridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bt_add_mapa)
+                .addComponent(jb_crearRelacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(jb_agregarMapaMental)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -346,19 +346,24 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         showDialog(this.jd_mapaMental);
     }//GEN-LAST:event_bt_addActionPerformed
 
-    private void bt_add_mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_add_mapaActionPerformed
+    private void jb_crearRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearRelacionActionPerformed
         // TODO add your handling code here:
+        for (Palabra p : palabras) {
+            System.out.println("Palabra" + p);
+        }
         for (int i = 0; i < palabras.size(); i++) {
             if (palabras.get(i)==this.cb_add_palabra1.getSelectedItem()) {
                 ConexionConceptual conexion=new ConexionConceptual(((Palabra)this.cb_add_palabra1.getSelectedItem()).getNombre()+"-"+((Palabra)this.cb_add_palabra2.getSelectedItem()).getNombre()
                         ,Integer.parseInt(this.sp_add_prioridad.getValue()+""),(Palabra)this.cb_add_palabra1.getSelectedItem(),(Palabra)this.cb_add_palabra2.getSelectedItem());
                 palabras.get(i).getAdyacencias().add(conexion);
+                //System.out.println("Conexion: " +palabras.get(i).getAdyacencias().get(i));
+                System.out.println("Agregada: " +conexion);
             }
         }
         this.sp_add_prioridad.setValue(1);
         this.cb_add_palabra1.setSelectedIndex(0);
         this.cb_add_palabra2.setSelectedIndex(0);
-    }//GEN-LAST:event_bt_add_mapaActionPerformed
+    }//GEN-LAST:event_jb_crearRelacionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -382,7 +387,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         this.cb_add_palabra2.setModel(modelo);
     }//GEN-LAST:event_cb_add_palabra1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jb_agregarMapaMentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarMapaMentalActionPerformed
         // TODO add your handling code here:
         //int a=JOptionPane.showConfirmDialog(this, "Desea finalizar el mapa mental?");
        // if () {
@@ -390,17 +395,22 @@ public class ventanaPrincipal extends javax.swing.JFrame {
        
         for (int i = 0; i < palabras.size(); i++) {
             mapa.addPalabra(palabras.get(i));
-            for (int j = 0; j < palabras.get(i).getAdyacencias().size(); j++) {
-                mapa.addConexion(palabras.get(i).getAdyacencias().get(i));
+            for (ConexionConceptual c  : palabras.get(i).getAdyacencias()) {
+                mapa.addConexion(c);
+                System.out.println("Conexion Agregada: " + c);
             }
+            /*for (int j = 0; j < palabras.get(i).getAdyacencias().size(); j++) {
+                mapa.addConexion(palabras.get(i).getAdyacencias().get(i));
+            }*/
         }
-        perfiles.getLast().getMapamental().add(mapa);
+        perfiles.getLast().getMapasmental().add(mapa);
         palabras.clear();
         DefaultComboBoxModel modelo=new DefaultComboBoxModel();
         this.cb_add_palabra1.setModel(modelo);
         this.cb_add_palabra2.setModel(modelo);
+        
         //}
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jb_agregarMapaMentalActionPerformed
     static void showDialog(JDialog d){
         
         d.setLocationRelativeTo(null);
@@ -444,14 +454,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_add;
-    private javax.swing.JButton bt_add_mapa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cb_add_palabra1;
     private javax.swing.JComboBox<String> cb_add_palabra2;
     private javax.swing.JComboBox<String> cb_add_raza;
     private com.toedter.calendar.JDateChooser dc_add_Fnacimiento;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -470,6 +478,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JButton jb_agregarMapaMental;
+    private javax.swing.JButton jb_crearRelacion;
     private javax.swing.JDialog jd_mapaMental;
     private javax.swing.JRadioButton rb_add_femenino;
     private javax.swing.JRadioButton rb_add_masculino;

@@ -57,6 +57,12 @@ public class ConexionConceptual {
         this.puntoB = puntoB;
     }
 
+    @Override
+    public String toString() {
+        return "ConexionConceptual{" + "id=" + id + ", importancia=" + importancia + ", puntoA=" + puntoA + ", puntoB=" + puntoB + '}';
+    }
+    
+
    
     
 }

@@ -13,13 +13,14 @@ import java.util.LinkedList;
  * @author luigy
  */
 public class Perfil {
+
     private String nombre;
     private String raza;
     private String genero;
     private Date fechaNacimiento;
     private String obs;
     private LinkedList<Perfil> hijos;
-    private LinkedList<mapaMental> mapamental;
+    private LinkedList<mapaMental> mapasMentales;
 
     public Perfil() {
     }
@@ -30,8 +31,8 @@ public class Perfil {
         this.genero = genero;
         this.fechaNacimiento = fechaNacimiento;
         this.obs = obs;
-        hijos=new LinkedList();
-        mapamental=new LinkedList();
+        hijos = new LinkedList();
+        mapasMentales = new LinkedList();
     }
 
     public String getNombre() {
@@ -82,13 +83,12 @@ public class Perfil {
         this.hijos = hijos;
     }
 
-    public LinkedList<mapaMental> getMapamental() {
-        return mapamental;
+    public LinkedList<mapaMental> getMapasmental() {
+        return mapasMentales;
     }
 
-    public void setMapamental(LinkedList<mapaMental> mapamental) {
-        this.mapamental = mapamental;
+    public void setMapasmental(LinkedList<mapaMental> mapamental) {
+        this.mapasMentales = mapamental;
     }
-    
-    
+
 }

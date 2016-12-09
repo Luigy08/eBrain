@@ -6,13 +6,14 @@
 package eBrain;
 
 import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
 
 /**
  *
  * @author danie
  */
 public class mapaMental {
-    private Graph mapa;
+    private Graph mapa = new SingleGraph("Mapa Mental");
 
     public mapaMental() {
     }
@@ -29,11 +30,14 @@ public class mapaMental {
         this.mapa = mapa;
     }
     public void addPalabra(Palabra p){
-        mapa.addNode(p.getNombre());
+        mapa.addNode(p.toString()).setAttribute("label", p.getNombre());
     }
+   
     public void addConexion(ConexionConceptual conexion){
         mapa.addEdge(conexion.getId(),conexion.getPuntoA().getNombre(),conexion.getPuntoB().getNombre(),true)
-                .setAttribute("weight", conexion.getImportancia());        
-    }    
+                .setAttribute("peso", conexion.getImportancia());        
+
+    }
+    
     
 }
