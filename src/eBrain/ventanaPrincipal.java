@@ -7,6 +7,7 @@ package eBrain;
 
 import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -153,7 +154,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                                 .addGroup(jd_mapaMentalLayout.createSequentialGroup()
                                     .addComponent(jLabel12)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(sp_add_prioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(sp_add_prioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(bt_add_mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -342,13 +343,15 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         this.dc_add_Fnacimiento.setDate(null);
         this.cb_add_raza.setSelectedIndex(0);
         this.rb_add_masculino.setSelected(true);
+        showDialog(this.jd_mapaMental);
     }//GEN-LAST:event_bt_addActionPerformed
 
     private void bt_add_mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_add_mapaActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < palabras.size(); i++) {
             if (palabras.get(i)==this.cb_add_palabra1.getSelectedItem()) {
-                ConexionConceptual conexion=new ConexionConceptual("",Integer.parseInt(this.sp_add_prioridad.getValue()+""),(Palabra)this.cb_add_palabra1.getSelectedItem(),(Palabra)this.cb_add_palabra2.getSelectedItem());
+                ConexionConceptual conexion=new ConexionConceptual(((Palabra)this.cb_add_palabra1.getSelectedItem()).getNombre()+"-"+((Palabra)this.cb_add_palabra2.getSelectedItem()).getNombre()
+                        ,Integer.parseInt(this.sp_add_prioridad.getValue()+""),(Palabra)this.cb_add_palabra1.getSelectedItem(),(Palabra)this.cb_add_palabra2.getSelectedItem());
                 palabras.get(i).getAdyacencias().add(conexion);
             }
         }
@@ -362,7 +365,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         palabras.add(new Palabra(this.tf_add_palabra.getText()));
         DefaultComboBoxModel modelo=new DefaultComboBoxModel();
         for (int i = 0; i < palabras.size(); i++) {
-            modelo.addElement(palabras.get(i));
+            modelo.addElement((Palabra)palabras.get(i));
         }
         this.cb_add_palabra1.setModel(modelo);
         this.tf_add_palabra.setText("");
@@ -371,9 +374,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private void cb_add_palabra1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_add_palabra1ActionPerformed
         // TODO add your handling code here:
         DefaultComboBoxModel modelo=new DefaultComboBoxModel();
-        for (int i = 0; i < perfiles.size(); i++) {
-            if (this.cb_add_palabra1.getSelectedItem()!=perfiles.get(i)) {
-                modelo.addElement(perfiles.get(i));
+        for (int i = 0; i < palabras.size(); i++) {
+            if ((Palabra)this.cb_add_palabra1.getSelectedItem()!=(Palabra)palabras.get(i)) {
+                modelo.addElement(palabras.get(i));
             }
         }
         this.cb_add_palabra2.setModel(modelo);
@@ -381,7 +384,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int a=JOptionPane.showConfirmDialog(this, "Desea finalizar el mapa mental?");
+        //int a=JOptionPane.showConfirmDialog(this, "Desea finalizar el mapa mental?");
        // if () {
        mapaMental mapa=new mapaMental();
        
@@ -398,7 +401,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         this.cb_add_palabra2.setModel(modelo);
         //}
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+    static void showDialog(JDialog d){
+        
+        d.setLocationRelativeTo(null);
+        d.pack();
+        d.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */

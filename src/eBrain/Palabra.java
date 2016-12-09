@@ -41,7 +41,7 @@ public class Palabra {
 
     @Override
     public String toString() {
-        return "Palabra{" + "nombre=" + nombre + ", adyacencias=" + adyacencias + '}';
+        return nombre;
     }
     
 }

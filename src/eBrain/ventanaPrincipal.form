@@ -50,7 +50,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="sp_add_prioridad" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="sp_add_prioridad" min="-2" pref="60" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="bt_add_mapa" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jButton2" max="32767" attributes="0"/>
