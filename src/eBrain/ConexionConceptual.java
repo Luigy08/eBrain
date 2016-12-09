@@ -12,16 +12,24 @@ package eBrain;
 public class ConexionConceptual {
     private String id;
     private int importancia;
-    private Palabra cabeza;
-    private Palabra cola;
+    private Palabra puntoA;
+    private Palabra puntoB;
 
     public ConexionConceptual() {
     }
 
-    public ConexionConceptual(String id,int importancia, Palabra cabeza, Palabra cola) {
+    public ConexionConceptual(String id, int importancia, Palabra puntoA, Palabra puntoB) {
+        this.id = id;
         this.importancia = importancia;
-        this.cabeza = cabeza;
-        this.cola = cola;
+        this.puntoA = puntoA;
+        this.puntoB = puntoB;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -33,31 +41,22 @@ public class ConexionConceptual {
         this.importancia = importancia;
     }
 
-    public Palabra getCabeza() {
-        return cabeza;
+    public Palabra getPuntoA() {
+        return puntoA;
     }
 
-    public void setCabeza(Palabra cabeza) {
-        this.cabeza = cabeza;
+    public void setPuntoA(Palabra puntoA) {
+        this.puntoA = puntoA;
     }
 
-    public Palabra getCola() {
-        return cola;
+    public Palabra getPuntoB() {
+        return puntoB;
     }
 
-    public void setCola(Palabra cola) {
-        this.cola = cola;
+    public void setPuntoB(Palabra puntoB) {
+        this.puntoB = puntoB;
     }
 
-    public String getId() {
-        return id;
-    }
-    
-    
-
-    @Override
-    public String toString() {
-        return "ConexionConceptual{" + "importancia=" + importancia + ", cabeza=" + cabeza + ", cola=" + cola + '}';
-    }
+   
     
 }

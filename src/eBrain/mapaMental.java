@@ -11,13 +11,13 @@ import org.graphstream.graph.Graph;
  *
  * @author danie
  */
-public class Grafo {
+public class mapaMental {
     private Graph mapa;
 
-    public Grafo() {
+    public mapaMental() {
     }
 
-    public Grafo(Graph mapa) {
+    public mapaMental(Graph mapa) {
         this.mapa = mapa;
     }
 
@@ -32,7 +32,7 @@ public class Grafo {
         mapa.addNode(p.getNombre());
     }
     public void addConexion(ConexionConceptual conexion){
-        mapa.addEdge(conexion.getId(),conexion.getCabeza().getNombre(),conexion.getCola().getNombre(),true)
+        mapa.addEdge(conexion.getId(),conexion.getPuntoA().getNombre(),conexion.getPuntoB().getNombre(),true)
                 .setAttribute("weight", conexion.getImportancia());        
     }    
     
