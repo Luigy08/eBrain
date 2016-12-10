@@ -59,7 +59,7 @@ public class ConexionConceptual {
 
     @Override
     public String toString() {
-        return "ConexionConceptual{" + "id=" + id + ", importancia=" + importancia + ", puntoA=" + puntoA + ", puntoB=" + puntoB + '}';
+        return "ConexionConceptual{" + "Id: " + id + ", Importancia: " + importancia + ", puntoA: " + puntoA + ", puntoB: " + puntoB + '}';
     }
     
 

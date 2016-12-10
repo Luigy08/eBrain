@@ -10,6 +10,10 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import org.graphstream.graph.Graph;
+
+import org.graphstream.graph.implementations.SingleGraph;
+
 /**
  *
  * @author luigy
@@ -21,6 +25,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
      */
     public ventanaPrincipal() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -343,14 +348,14 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         this.dc_add_Fnacimiento.setDate(null);
         this.cb_add_raza.setSelectedIndex(0);
         this.rb_add_masculino.setSelected(true);
-        showDialog(this.jd_mapaMental);
+        jd_mapaMental.pack();
+        jd_mapaMental.setLocationRelativeTo(this);
+        jd_mapaMental.setVisible(true);
+        //showDialog(this.jd_mapaMental);
     }//GEN-LAST:event_bt_addActionPerformed
 
     private void jb_crearRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearRelacionActionPerformed
         // TODO add your handling code here:
-        for (Palabra p : palabras) {
-            System.out.println("Palabra" + p);
-        }
         for (int i = 0; i < palabras.size(); i++) {
             if (palabras.get(i)==this.cb_add_palabra1.getSelectedItem()) {
                 ConexionConceptual conexion=new ConexionConceptual(((Palabra)this.cb_add_palabra1.getSelectedItem()).getNombre()+"-"+((Palabra)this.cb_add_palabra2.getSelectedItem()).getNombre()
@@ -390,26 +395,27 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private void jb_agregarMapaMentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarMapaMentalActionPerformed
         // TODO add your handling code here:
         //int a=JOptionPane.showConfirmDialog(this, "Desea finalizar el mapa mental?");
-       // if () {
-       mapaMental mapa=new mapaMental();
-       
-        for (int i = 0; i < palabras.size(); i++) {
-            mapa.addPalabra(palabras.get(i));
-            for (ConexionConceptual c  : palabras.get(i).getAdyacencias()) {
-                mapa.addConexion(c);
-                System.out.println("Conexion Agregada: " + c);
+        // if () {
+        ConexionConceptual temp = new ConexionConceptual();
+        Graph mapa = new SingleGraph("MapaMental");
+        for (int i=0; i< palabras.size(); i++) {
+            mapa.addNode(palabras.get(i).getNombre()).setAttribute("label", palabras.get(i).getNombre());
+            for (int j = 0; j < palabras.get(i).getAdyacencias().size(); j++) {
+                temp = palabras.get(palabras.indexOf(palabras.get(i))).getAdyacencias().get(j);
+                adyacencias.add(temp);
             }
-            /*for (int j = 0; j < palabras.get(i).getAdyacencias().size(); j++) {
-                mapa.addConexion(palabras.get(i).getAdyacencias().get(i));
-            }*/
         }
-        perfiles.getLast().getMapasmental().add(mapa);
+        for (ConexionConceptual c : adyacencias) {
+            mapa.addEdge(c.getId(), c.getPuntoA().getNombre(), c.getPuntoB().getNombre())
+                        .setAttribute("label", c.getImportancia());
+        }
+        mapa.display();
+        perfiles.getLast().getMapasMentales().add(mapa);
         palabras.clear();
         DefaultComboBoxModel modelo=new DefaultComboBoxModel();
         this.cb_add_palabra1.setModel(modelo);
         this.cb_add_palabra2.setModel(modelo);
-        
-        //}
+        //}*/
     }//GEN-LAST:event_jb_agregarMapaMentalActionPerformed
     static void showDialog(JDialog d){
         
@@ -490,4 +496,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 LinkedList<Perfil>perfiles=new LinkedList();
 LinkedList<Palabra>palabras=new LinkedList();
+LinkedList<ConexionConceptual>adyacencias=new LinkedList();
+
 }

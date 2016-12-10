@@ -7,6 +7,7 @@ package eBrain;
 
 import java.util.Date;
 import java.util.LinkedList;
+import org.graphstream.graph.Graph;
 
 /**
  *
@@ -20,7 +21,7 @@ public class Perfil {
     private Date fechaNacimiento;
     private String obs;
     private LinkedList<Perfil> hijos;
-    private LinkedList<mapaMental> mapasMentales;
+    private LinkedList<Graph> mapasMentales;
 
     public Perfil() {
     }
@@ -83,12 +84,14 @@ public class Perfil {
         this.hijos = hijos;
     }
 
-    public LinkedList<mapaMental> getMapasmental() {
+    public LinkedList<Graph> getMapasMentales() {
         return mapasMentales;
     }
 
-    public void setMapasmental(LinkedList<mapaMental> mapamental) {
-        this.mapasMentales = mapamental;
+    public void setMapasMentales(LinkedList<Graph> mapasMentales) {
+        this.mapasMentales = mapasMentales;
     }
+
+    
 
 }
