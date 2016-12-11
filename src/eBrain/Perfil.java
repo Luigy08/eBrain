@@ -92,6 +92,11 @@ public class Perfil {
         this.mapasMentales = mapasMentales;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     
 
 }
