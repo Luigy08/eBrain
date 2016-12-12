@@ -10,9 +10,11 @@ import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import org.graphstream.algorithm.Dijkstra;
 import org.graphstream.algorithm.Prim;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.ui.view.Viewer;
 
@@ -121,6 +123,17 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jb_mostrarMapa = new javax.swing.JButton();
         jb_mostrarPrim = new javax.swing.JButton();
         jb_actualizarTodo = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        cb_dt_perfil = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
+        cb_dt_mapa = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        cb_dt_origen = new javax.swing.JComboBox<>();
+        jLabel29 = new javax.swing.JLabel();
+        cb_dt_destino = new javax.swing.JComboBox<>();
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel6.setText("Mapa mental");
@@ -319,15 +332,14 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(bt_add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(dc_add_Fnacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cb_add_raza, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dc_add_Fnacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_add_raza, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -746,6 +758,109 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Perfil", jPanel9);
 
+        jPanel7.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel7ComponentShown(evt);
+            }
+        });
+
+        jLabel25.setText("Perfil");
+
+        cb_dt_perfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_dt_perfilActionPerformed(evt);
+            }
+        });
+
+        jLabel27.setText("Mapa mental");
+
+        cb_dt_mapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_dt_mapaActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Mostrar mapa");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Dijkstra");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jLabel28.setText("Origen");
+
+        cb_dt_origen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_dt_origenActionPerformed(evt);
+            }
+        });
+
+        jLabel29.setText("Destino");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_dt_mapa, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_dt_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_dt_origen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton7)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_dt_destino, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(cb_dt_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(cb_dt_mapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(cb_dt_origen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29)
+                    .addComponent(cb_dt_destino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton7))
+                .addContainerGap(163, Short.MAX_VALUE))
+        );
+
+        jTabbedPane5.addTab("tab2", jPanel7);
+
         jTabbedPane1.addTab("Ejercicio", jTabbedPane5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1015,6 +1130,70 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jPanel7ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel7ComponentShown
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        for (int i = 0; i < perfiles.size(); i++) {
+          modelo.addElement(perfiles.get(i));
+        }
+        this.cb_dt_perfil.setModel(modelo);
+    }//GEN-LAST:event_jPanel7ComponentShown
+
+    private void cb_dt_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_dt_perfilActionPerformed
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        for (int i = 0; i < ((Perfil)this.cb_dt_perfil.getSelectedItem()).getMapasMentales().size(); i++) {
+            modelo.addElement(((Perfil)this.cb_dt_perfil.getSelectedItem()).getMapasMentales().get(i));
+        }
+        this.cb_dt_mapa.setModel(modelo);
+    }//GEN-LAST:event_cb_dt_perfilActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Graph mapa = (Graph)cb_dt_mapa.getSelectedItem();
+        mapa.display().setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        Dijkstra d=new Dijkstra(Dijkstra.Element.EDGE, "result", "peso");
+        Graph mapa = (Graph)cb_dt_mapa.getSelectedItem();
+        d.init(mapa);
+        d.setSource(mapa.getNode(this.cb_dt_origen.getSelectedItem().toString()));
+        d.compute();
+        
+        for (Edge edge : d.getPathEdges(mapa.getNode(this.cb_dt_destino.getSelectedItem().toString()))) 
+             edge.addAttribute("ui.style", "fill-color: blue;");
+        for (Node node : mapa) 
+             System.out.printf("%s->%s:%6.2f%n", d.getSource(), node, d.getPathLength(node)); 
+        
+        System.out.println(d.getPath(mapa.getNode(this.cb_dt_destino.getSelectedItem().toString()))); 
+        mapa.display().setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+        d.clear();
+         for (Edge edge : d.getPathEdges(mapa.getNode(this.cb_dt_destino.getSelectedItem().toString()))) 
+             edge.addAttribute("ui.style", "fill-color: black;");
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void cb_dt_mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_dt_mapaActionPerformed
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        for (int i = 0; i < ((Graph)this.cb_dt_mapa.getSelectedItem()).getNodeCount(); i++) {
+            modelo.addElement(((Graph)this.cb_dt_mapa.getSelectedItem()).getNode(i));
+        }
+        this.cb_dt_origen.setModel(modelo);
+    }//GEN-LAST:event_cb_dt_mapaActionPerformed
+
+    private void cb_dt_origenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_dt_origenActionPerformed
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        for (int i = 0; i < ((Graph)this.cb_dt_mapa.getSelectedItem()).getNodeCount(); i++) {
+            if ((Node)this.cb_dt_origen.getSelectedItem()!=((Graph)this.cb_dt_mapa.getSelectedItem()).getNode(i)) {
+                modelo.addElement(((Graph)this.cb_dt_mapa.getSelectedItem()).getNode(i));
+            }
+        }
+        this.cb_dt_destino.setModel(modelo);
+    }//GEN-LAST:event_cb_dt_origenActionPerformed
     static void showDialog(JDialog d){
         
         d.setLocationRelativeTo(null);
@@ -1063,6 +1242,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_add_palabra1;
     private javax.swing.JComboBox<String> cb_add_palabra2;
     private javax.swing.JComboBox<String> cb_add_raza;
+    private javax.swing.JComboBox<String> cb_dt_destino;
+    private javax.swing.JComboBox<String> cb_dt_mapa;
+    private javax.swing.JComboBox<String> cb_dt_origen;
+    private javax.swing.JComboBox<String> cb_dt_perfil;
     private javax.swing.JComboBox<String> cb_mod_conexionMapa;
     private javax.swing.JComboBox<String> cb_mod_mapa;
     private javax.swing.JComboBox<String> cb_mod_palabraMapa;
@@ -1071,11 +1254,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_mod_raza;
     private com.toedter.calendar.JDateChooser dc_add_Fnacimiento;
     private com.toedter.calendar.JDateChooser dc_mod_Fnacimiento;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1093,7 +1278,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1107,6 +1296,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
