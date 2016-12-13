@@ -122,7 +122,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jc_mapasMentales = new javax.swing.JComboBox<>();
         jb_mostrarMapa = new javax.swing.JButton();
         jb_mostrarPrim = new javax.swing.JButton();
-        jb_actualizarTodo = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         cb_dt_perfil = new javax.swing.JComboBox<>();
@@ -134,6 +133,17 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         cb_dt_origen = new javax.swing.JComboBox<>();
         jLabel29 = new javax.swing.JLabel();
         cb_dt_destino = new javax.swing.JComboBox<>();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jPanel8 = new javax.swing.JPanel();
+        jc_perfilesEliminar = new javax.swing.JComboBox<>();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jc_grafosEliminar = new javax.swing.JComboBox<>();
+        jb_eliminarMapa = new javax.swing.JButton();
+        jb_eliminarPerfil = new javax.swing.JButton();
+        jLabel32 = new javax.swing.JLabel();
+        jc_aristas = new javax.swing.JComboBox<>();
+        jc_eliminarRelaciones = new javax.swing.JButton();
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel6.setText("Mapa mental");
@@ -285,7 +295,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Genero");
 
         buttonGroup1.add(rb_add_masculino);
-        rb_add_masculino.setSelected(true);
         rb_add_masculino.setText("Masculino");
 
         buttonGroup1.add(rb_add_femenino);
@@ -340,7 +349,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cb_add_raza, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,7 +386,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 407, Short.MAX_VALUE)
+            .addGap(0, 503, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,7 +433,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel15.setText("Genero");
 
         buttonGroup2.add(rb_mod_masculino);
-        rb_mod_masculino.setSelected(true);
         rb_mod_masculino.setText("Masculino");
 
         buttonGroup2.add(rb_mod_femenino);
@@ -492,7 +500,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton2))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,6 +578,11 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         sp_mod_prioridadMapa.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
 
         jButton6.setText("GUARDAR CAMBIOS");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel26.setText("Mapa mental");
 
@@ -623,7 +636,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel19)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(cb_mod_perfilMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -681,6 +694,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Modificar", jPanel3);
 
+        jTabbedPane5.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTabbedPane5ComponentShown(evt);
+            }
+        });
+
         jc_perfiles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jc_perfilesActionPerformed(evt);
@@ -705,13 +724,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jb_actualizarTodo.setText("Actualizar");
-        jb_actualizarTodo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jb_actualizarTodoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -730,14 +742,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jl_mapaMental))
                             .addComponent(jb_mostrarMapa))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jb_actualizarTodo)
-                            .addComponent(jc_mapasMentales, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(jc_mapasMentales, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
-
-        jPanel9Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jb_actualizarTodo, jb_mostrarMapa});
-
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
@@ -748,9 +755,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jl_mapaMental)
                     .addComponent(jc_mapasMentales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb_mostrarMapa)
-                    .addComponent(jb_actualizarTodo))
+                .addComponent(jb_mostrarMapa)
                 .addGap(18, 18, 18)
                 .addComponent(jb_mostrarPrim)
                 .addContainerGap(144, Short.MAX_VALUE))
@@ -833,7 +838,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cb_dt_destino, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -862,6 +867,125 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jTabbedPane5.addTab("tab2", jPanel7);
 
         jTabbedPane1.addTab("Ejercicio", jTabbedPane5);
+
+        jTabbedPane4.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTabbedPane4ComponentShown(evt);
+            }
+        });
+
+        jc_perfilesEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jc_perfilesEliminarActionPerformed(evt);
+            }
+        });
+
+        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel30.setText("Perfil");
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel31.setText("Mapa Mental");
+
+        jc_grafosEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jc_grafosEliminarActionPerformed(evt);
+            }
+        });
+
+        jb_eliminarMapa.setText("Eliminar Mapa Mental");
+        jb_eliminarMapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_eliminarMapaActionPerformed(evt);
+            }
+        });
+
+        jb_eliminarPerfil.setText("Eliminar Perfil");
+        jb_eliminarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_eliminarPerfilActionPerformed(evt);
+            }
+        });
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel32.setText("Relaciones");
+
+        jc_aristas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jc_aristasActionPerformed(evt);
+            }
+        });
+
+        jc_eliminarRelaciones.setText("Eliminar Relacion");
+        jc_eliminarRelaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jc_eliminarRelacionesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jc_perfilesEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_eliminarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jc_eliminarRelaciones)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jc_aristas, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jc_grafosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                                .addComponent(jb_eliminarMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(42, 42, 42))))
+        );
+
+        jPanel8Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jc_aristas, jc_grafosEliminar, jc_perfilesEliminar});
+
+        jPanel8Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jb_eliminarMapa, jb_eliminarPerfil, jc_eliminarRelaciones});
+
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jc_perfilesEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30)
+                    .addComponent(jc_grafosEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_eliminarPerfil)
+                    .addComponent(jb_eliminarMapa))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jc_aristas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32))
+                .addGap(18, 18, 18)
+                .addComponent(jc_eliminarRelaciones)
+                .addContainerGap(123, Short.MAX_VALUE))
+        );
+
+        jPanel8Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel30, jc_perfilesEliminar});
+
+        jTabbedPane4.addTab("Perfil", jPanel8);
+
+        jTabbedPane1.addTab("Eliminar", jTabbedPane4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1021,13 +1145,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     private void jc_perfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jc_perfilesActionPerformed
         // TODO add your handling code here:
-        jc_mapasMentales.removeAllItems();
-        DefaultComboBoxModel model2 = new DefaultComboBoxModel();
-        Perfil perfil = (Perfil) jc_perfiles.getSelectedItem();
-        for (int i = 0; i < perfil.getMapasMentales().size(); i++) {
-            model2.addElement((Graph)perfil.getMapasMentales().get(i));
+        try {
+            jc_mapasMentales.removeAllItems();
+            DefaultComboBoxModel model2 = new DefaultComboBoxModel();
+            Perfil perfil = (Perfil) jc_perfiles.getSelectedItem();
+            for (int i = 0; i < perfil.getMapasMentales().size(); i++) {
+                model2.addElement((Graph)perfil.getMapasMentales().get(i));
+            }
+            jc_mapasMentales.setModel(model2);
+        } catch (Exception e) {
         }
-        jc_mapasMentales.setModel(model2);
     }//GEN-LAST:event_jc_perfilesActionPerformed
 
     private void jb_mostrarMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarMapaActionPerformed
@@ -1047,17 +1174,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         prim.compute();
         mapa.display().setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
     }//GEN-LAST:event_jb_mostrarPrimActionPerformed
-
-    private void jb_actualizarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_actualizarTodoActionPerformed
-        // TODO add your handling code here:
-        jc_perfiles.removeAllItems();
-        jc_perfiles.removeAllItems();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        for (Perfil perfil : perfiles) {
-            model.addElement((Perfil)perfil);
-        }
-        jc_perfiles.setModel(model);
-    }//GEN-LAST:event_jb_actualizarTodoActionPerformed
 
     private void jb_agregarPalabrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarPalabrasActionPerformed
         // TODO add your handling code here:
@@ -1194,6 +1310,138 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         }
         this.cb_dt_destino.setModel(modelo);
     }//GEN-LAST:event_cb_dt_origenActionPerformed
+
+    private void jTabbedPane5ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane5ComponentShown
+        // TODO add your handling code here:
+        try {
+            jc_perfiles.removeAllItems();
+            jc_perfiles.removeAllItems();
+            DefaultComboBoxModel model = new DefaultComboBoxModel();
+            for (Perfil perfil : perfiles) {
+                model.addElement((Perfil)perfil);
+            }
+            jc_perfiles.setModel(model);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jTabbedPane5ComponentShown
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jc_perfilesEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jc_perfilesEliminarActionPerformed
+        // TODO add your handling code here:
+        try {
+            perfilEliminar = (Perfil)jc_perfilesEliminar.getSelectedItem();
+            jc_grafosEliminar.removeAllItems();
+            DefaultComboBoxModel model2 = new DefaultComboBoxModel();
+            Perfil perfil = (Perfil) jc_perfilesEliminar.getSelectedItem();
+            for (int i = 0; i < perfil.getMapasMentales().size(); i++) {
+                model2.addElement((Graph)perfil.getMapasMentales().get(i));
+            }
+            jc_grafosEliminar.setModel(model2);
+            } catch (Exception e) {
+            }
+    }//GEN-LAST:event_jc_perfilesEliminarActionPerformed
+
+    private void jb_eliminarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarPerfilActionPerformed
+        // TODO add your handling code here:
+        try {
+            for (int i = 0; i < perfiles.size(); i++) {
+                if (perfiles.get(i) == perfilEliminar) {
+                    perfiles.remove(perfiles.get(i));
+                }
+            }
+            jc_perfilesEliminar.removeAllItems();
+            jc_grafosEliminar.removeAllItems();
+            DefaultComboBoxModel model = new DefaultComboBoxModel();
+            for (Perfil perfil : perfiles) {
+                model.addElement((Perfil)perfil);
+            }
+            jc_perfilesEliminar.setModel(model);
+            JOptionPane.showMessageDialog(null, "Perfil Eliminado");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jb_eliminarPerfilActionPerformed
+
+    private void jTabbedPane4ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jTabbedPane4ComponentShown
+        // TODO add your handling code here:
+        jc_perfilesEliminar.removeAllItems();
+        jc_grafosEliminar.removeAllItems();
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        for (Perfil perfil : perfiles) {
+            model.addElement((Perfil)perfil);
+        }
+        jc_perfilesEliminar.setModel(model);
+    }//GEN-LAST:event_jTabbedPane4ComponentShown
+
+    private void jb_eliminarMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_eliminarMapaActionPerformed
+        // TODO add your handling code here:
+        try {
+            for (int i = 0; i < perfiles.size(); i++) {
+                for (int j = 0; j < perfiles.get(i).getMapasMentales().size(); j++) {
+                    if (perfiles.get(i).getMapasMentales().get(j)==grafoEliminar) {
+                        perfiles.get(i).getMapasMentales().remove(j);
+                    }
+                }
+            }
+            perfilEliminar = (Perfil)jc_perfilesEliminar.getSelectedItem();
+            jc_grafosEliminar.removeAllItems();
+            DefaultComboBoxModel model2 = new DefaultComboBoxModel();
+            Perfil perfil = (Perfil) jc_perfilesEliminar.getSelectedItem();
+            for (int i = 0; i < perfil.getMapasMentales().size(); i++) {
+                model2.addElement((Graph)perfil.getMapasMentales().get(i));
+            }
+            jc_grafosEliminar.setModel(model2);
+            JOptionPane.showMessageDialog(null, "Mapa Mental Eliminado");
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jb_eliminarMapaActionPerformed
+
+    private void jc_grafosEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jc_grafosEliminarActionPerformed
+        // TODO add your handling code here:
+        try {
+            grafoEliminar = (Graph)jc_grafosEliminar.getSelectedItem();
+            jc_aristas.removeAllItems();
+            DefaultComboBoxModel model2 = new DefaultComboBoxModel();
+            for (int i = 0; i < grafoEliminar.getEdgeCount(); i++) {
+                model2.addElement(grafoEliminar.getEdge(i).getId());
+            }
+            jc_aristas.setModel(model2);
+            
+        } catch (Exception e) {
+        }
+        
+    }//GEN-LAST:event_jc_grafosEliminarActionPerformed
+
+    private void jc_eliminarRelacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jc_eliminarRelacionesActionPerformed
+        // TODO add your handling code here:
+        try {
+            for (int i = 0; i < perfiles.size(); i++) {
+                for (Graph g : perfiles.get(i).getMapasMentales()) {
+                    g.removeEdge(idEliminar);
+            
+                }
+            }
+            jc_aristas.removeAllItems();
+            DefaultComboBoxModel model2 = new DefaultComboBoxModel();
+            for (int i = 0; i < grafoEliminar.getEdgeCount(); i++) {
+                model2.addElement(grafoEliminar.getEdge(i).getId());
+            }
+            jc_aristas.setModel(model2);
+            JOptionPane.showMessageDialog(this, "Relacion Eliminada");
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jc_eliminarRelacionesActionPerformed
+
+    private void jc_aristasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jc_aristasActionPerformed
+        // TODO add your handling code here:
+        try {
+            idEliminar = jc_aristas.getSelectedItem().toString();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jc_aristasActionPerformed
     static void showDialog(JDialog d){
         
         d.setLocationRelativeTo(null);
@@ -1284,6 +1532,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1297,21 +1548,28 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
-    private javax.swing.JButton jb_actualizarTodo;
     private javax.swing.JButton jb_agregarMapaMental;
     private javax.swing.JButton jb_agregarPalabras;
     private javax.swing.JButton jb_crearRelacion;
+    private javax.swing.JButton jb_eliminarMapa;
+    private javax.swing.JButton jb_eliminarPerfil;
     private javax.swing.JButton jb_mostrarMapa;
     private javax.swing.JButton jb_mostrarPrim;
+    private javax.swing.JComboBox<String> jc_aristas;
+    private javax.swing.JButton jc_eliminarRelaciones;
+    private javax.swing.JComboBox<String> jc_grafosEliminar;
     private javax.swing.JComboBox<String> jc_mapasMentales;
     private javax.swing.JComboBox<String> jc_perfiles;
+    private javax.swing.JComboBox<String> jc_perfilesEliminar;
     private javax.swing.JDialog jd_mapaMental;
     private javax.swing.JLabel jl_mapaMental;
     private javax.swing.JLabel jl_perfil;
@@ -1334,5 +1592,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     LinkedList<Palabra>palabras=new LinkedList();
     LinkedList<ConexionConceptual>adyacencias=new LinkedList();
     Perfil perfilModificar;
-
+    Perfil perfilEliminar;
+    Graph grafoEliminar;
+    String idEliminar;
 }
