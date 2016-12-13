@@ -1159,20 +1159,35 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     private void jb_mostrarMapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarMapaActionPerformed
         // TODO add your handling code here:
-        Graph mapa = (Graph)jc_mapasMentales.getSelectedItem();
-        mapa.display().setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+        try {
+            Graph mapa = (Graph)jc_mapasMentales.getSelectedItem();
+            mapa.removeAttribute("ui.stylesheet");
+            for (Edge e : mapa.getEachEdge()) {
+                e.addAttribute("ui.style", "fill-color: black;");
+            }
+            mapa.display().setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jb_mostrarMapaActionPerformed
 
     private void jb_mostrarPrimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_mostrarPrimActionPerformed
         // TODO add your handling code here:
-        Graph mapa = (Graph)jc_mapasMentales.getSelectedItem();
+        try {
+            Graph mapaPrim = (Graph)jc_mapasMentales.getSelectedItem();
+        for (Edge e : mapaPrim.getEachEdge()) {
+            e.addAttribute("ui.style", "fill-color: black;");
+        }
         String css = "edge .notintree {size:1px;fill-color:gray;} " +
         "edge .intree {size:3px;fill-color:black;}";
-        mapa.addAttribute("ui.stylesheet", css);
+        mapaPrim.addAttribute("ui.stylesheet", css);
         Prim prim = new Prim("ui.class", "intree", "notintree");
-        prim.init(mapa);
+        prim.init(mapaPrim);
         prim.compute();
-        mapa.display().setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+        mapaPrim.display().setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+        
+        } catch (Exception e) {
+        }
+
     }//GEN-LAST:event_jb_mostrarPrimActionPerformed
 
     private void jb_agregarPalabrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarPalabrasActionPerformed
@@ -1215,7 +1230,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     private void jb_agregarMapaMentalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_agregarMapaMentalActionPerformed
         // TODO add your handling code here:
-        //int a=JOptionPane.showConfirmDialog(this, "Desea finalizar el mapa mental?");
+        //int a=JOptionPane.showConfirmDialog(this, "Desea finalizar el mapaPrim mental?");
         // if () {
             Graph mapa = new SingleGraph(tf_nombreGrafo.getText());
             for (int i=0; i< palabras.size(); i++) {
@@ -1268,6 +1283,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Graph mapa = (Graph)cb_dt_mapa.getSelectedItem();
+        mapa.removeAttribute("ui.stylesheet");
+        for (Edge e : mapa.getEachEdge()) {
+            e.addAttribute("ui.style", "fill-color: black;");
+        }
         mapa.display().setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1275,10 +1294,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         Dijkstra d=new Dijkstra(Dijkstra.Element.EDGE, "result", "peso");
         Graph mapa = (Graph)cb_dt_mapa.getSelectedItem();
+        mapa.removeAttribute("ui.stylesheet");
         d.init(mapa);
         d.setSource(mapa.getNode(this.cb_dt_origen.getSelectedItem().toString()));
         d.compute();
-        
+        for (Edge e : mapa.getEachEdge()) {
+            e.addAttribute("ui.style", "fill-color: black;");
+        }
         for (Edge edge : d.getPathEdges(mapa.getNode(this.cb_dt_destino.getSelectedItem().toString()))) 
              edge.addAttribute("ui.style", "fill-color: blue;");
         for (Node node : mapa) 
