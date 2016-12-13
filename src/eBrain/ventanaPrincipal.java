@@ -16,6 +16,7 @@ import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.layout.HierarchicalLayout;
 import org.graphstream.ui.view.Viewer;
 
 /**
@@ -61,6 +62,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         tf_nombreGrafo = new javax.swing.JTextField();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -78,12 +80,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ta_add_obs = new javax.swing.JTextArea();
         bt_add = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         cb_mod_perfil = new javax.swing.JComboBox<>();
+        jButton4 = new javax.swing.JButton();
         tf_mod_nombre = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -95,9 +97,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         dc_mod_Fnacimiento = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         ta_mod_obs = new javax.swing.JTextArea();
-        jLabel18 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         cb_mod_perfilMapa = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
@@ -114,6 +115,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
         cb_mod_mapa = new javax.swing.JComboBox<>();
+        jButton8 = new javax.swing.JButton();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
         jc_perfiles = new javax.swing.JComboBox<>();
@@ -133,6 +135,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         cb_dt_origen = new javax.swing.JComboBox<>();
         jLabel29 = new javax.swing.JLabel();
         cb_dt_destino = new javax.swing.JComboBox<>();
+        jPanel10 = new javax.swing.JPanel();
+        cb_arbol_padre = new javax.swing.JComboBox<>();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        cb_arbol_hijo = new javax.swing.JComboBox<>();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel8 = new javax.swing.JPanel();
         jc_perfilesEliminar = new javax.swing.JComboBox<>();
@@ -295,6 +304,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Genero");
 
         buttonGroup1.add(rb_add_masculino);
+        rb_add_masculino.setSelected(true);
         rb_add_masculino.setText("Masculino");
 
         buttonGroup1.add(rb_add_femenino);
@@ -382,19 +392,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Perfil", jPanel2);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 503, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 298, Short.MAX_VALUE)
-        );
-
-        jTabbedPane2.addTab("sdfdf", jPanel5);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -428,17 +425,23 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("ELIMINAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         jLabel14.setText("Nombre");
 
         jLabel15.setText("Genero");
 
         buttonGroup2.add(rb_mod_masculino);
+        rb_mod_masculino.setSelected(true);
         rb_mod_masculino.setText("Masculino");
 
         buttonGroup2.add(rb_mod_femenino);
         rb_mod_femenino.setText("Femenino");
-
-        cb_mod_raza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel16.setText("Raza");
 
@@ -448,8 +451,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         ta_mod_obs.setRows(5);
         jScrollPane2.setViewportView(ta_mod_obs);
 
-        jLabel18.setText("Observacion");
-
         jButton2.setText("GUARDAR CAMBIOS");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -457,12 +458,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("ELIMINAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        jLabel18.setText("Observacion");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -592,12 +588,19 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setText("AUMENTAR MAPA DE CONOCIMIENTO");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel20)
@@ -635,7 +638,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                             .addGap(11, 11, 11)
                             .addComponent(jLabel19)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cb_mod_perfilMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cb_mod_perfilMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)))
                 .addContainerGap(148, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -670,7 +676,9 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                     .addComponent(sp_mod_prioridadMapa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Mapa Mental", jPanel6);
@@ -761,7 +769,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(144, Short.MAX_VALUE))
         );
 
-        jTabbedPane5.addTab("Perfil", jPanel9);
+        jTabbedPane5.addTab("Conocimientos importantes", jPanel9);
 
         jPanel7.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -864,7 +872,81 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(163, Short.MAX_VALUE))
         );
 
-        jTabbedPane5.addTab("tab2", jPanel7);
+        jTabbedPane5.addTab("Tren de pensamiento", jPanel7);
+
+        jPanel10.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel10ComponentShown(evt);
+            }
+        });
+
+        cb_arbol_padre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_arbol_padreActionPerformed(evt);
+            }
+        });
+
+        jLabel33.setText("Padre");
+
+        jLabel34.setText("Hijo");
+
+        jButton9.setText("CREAR RELACION");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setText("MOSTRAR ARBOL");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel34)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_arbol_hijo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel33)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cb_arbol_padre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton10)))
+                .addContainerGap(269, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_arbol_padre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(cb_arbol_hijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton9)
+                    .addComponent(jButton10))
+                .addContainerGap(193, Short.MAX_VALUE))
+        );
+
+        jTabbedPane5.addTab("Arbol genealogico", jPanel10);
 
         jTabbedPane1.addTab("Ejercicio", jTabbedPane5);
 
@@ -1074,75 +1156,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel4ComponentShown
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        for (int i = 0; i < perfiles.size(); i++) {
-            if (perfiles.get(i)==perfilModificar) {
-                perfiles.remove(i);
-            }
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        for (int i = 0; i < perfiles.size(); i++) {
-            if (perfiles.get(i)==perfilModificar) {
-                perfiles.get(i).setNombre(this.tf_mod_nombre.getText());
-                perfiles.get(i).setObs(this.ta_mod_obs.getText());
-                perfiles.get(i).setFechaNacimiento(this.dc_mod_Fnacimiento.getDate());
-                perfiles.get(i).setRaza(this.cb_mod_raza.getSelectedItem().toString());
-                if (this.rb_mod_femenino.isSelected()) {
-                    perfiles.get(i).setGenero("Femenino");
-                }else{
-                    perfiles.get(i).setGenero("Masculino");
-                }
-            }
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void cb_mod_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_mod_perfilActionPerformed
-        // TODO add your handling code here:
-        this.perfilModificar=(Perfil)this.cb_mod_perfil.getSelectedItem();
-        this.tf_mod_nombre.setEnabled(true);
-        this.ta_mod_obs.setEnabled(true);
-        this.cb_mod_raza.setEnabled(true);
-        this.rb_mod_femenino.setEnabled(true);
-        this.rb_mod_masculino.setEnabled(true);
-        this.dc_mod_Fnacimiento.setEnabled(true);
-        this.tf_mod_nombre.setText(perfilModificar.getNombre());
-        this.ta_mod_obs.setText(perfilModificar.getObs());
-        this.cb_mod_raza.setSelectedItem(perfilModificar.getRaza());
-        if (perfilModificar.getGenero().equals("Femenino")) {
-            this.rb_mod_femenino.setSelected(true);
-        }else{
-            this.rb_mod_masculino.setSelected(true);
-        }
-        this.dc_mod_Fnacimiento.setDate(perfilModificar.getFechaNacimiento());
-    }//GEN-LAST:event_cb_mod_perfilActionPerformed
-
-    private void bt_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addActionPerformed
-        // TODO add your handling code here:
-        String genero;
-        if (this.rb_add_femenino.isSelected()) {
-            genero="Femenino";
-        }else{
-            genero="Masculino";
-        }
-        Perfil nuevo=new Perfil(this.tf_add_nombre.getText(),this.cb_add_raza.getSelectedItem().toString(),genero,this.dc_add_Fnacimiento.getDate(),
-            this.ta_add_obs.getText());
-        perfiles.add(nuevo);
-        JOptionPane.showMessageDialog(this,"Agregado");
-        this.tf_add_nombre.setText("");
-        this.ta_add_obs.setText("");
-        this.dc_add_Fnacimiento.setDate(null);
-        this.cb_add_raza.setSelectedIndex(0);
-        this.rb_add_masculino.setSelected(true);
-        jd_mapaMental.pack();
-        jd_mapaMental.setLocationRelativeTo(this);
-        jd_mapaMental.setVisible(true);
-        //showDialog(this.jd_mapaMental);
-    }//GEN-LAST:event_bt_addActionPerformed
-
     private void jc_perfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jc_perfilesActionPerformed
         // TODO add your handling code here:
         try {
@@ -1308,7 +1321,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         
         System.out.println(d.getPath(mapa.getNode(this.cb_dt_destino.getSelectedItem().toString()))); 
         mapa.display().setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
-        d.clear();
+        
          for (Edge edge : d.getPathEdges(mapa.getNode(this.cb_dt_destino.getSelectedItem().toString()))) 
              edge.addAttribute("ui.style", "fill-color: black;");
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -1464,6 +1477,123 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jc_aristasActionPerformed
+
+    private void cb_arbol_padreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_arbol_padreActionPerformed
+        // TODO add your handling code here:
+        DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        for (int i = 0; i < perfiles.size(); i++) {
+            if (perfiles.get(i)!=(Perfil)this.cb_arbol_padre.getSelectedItem()) {
+                modelo.addElement(perfiles.get(i));
+            }
+        }
+        this.cb_arbol_hijo.setModel(modelo);
+    }//GEN-LAST:event_cb_arbol_padreActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        String id=((Perfil)this.cb_arbol_padre.getSelectedItem()).getNombre()+"-"+((Perfil)this.cb_arbol_hijo.getSelectedItem()).getNombre();
+        arbol.addEdge(id, ((Perfil)this.cb_arbol_padre.getSelectedItem()).getNombre(), ((Perfil)this.cb_arbol_hijo.getSelectedItem()).getNombre(),true);
+        this.cb_arbol_hijo.setSelectedIndex(0);
+        this.cb_arbol_padre.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        Viewer viewer = arbol.display(false);
+        HierarchicalLayout hl = new HierarchicalLayout();
+        viewer.enableAutoLayout(hl);
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
+        arbol.setStrict(false);
+        arbol.setAutoCreate(false);
+        for (int i = 0; i < arbol.getNodeCount(); i++) {
+            arbol.getNode(i).addAttribute("ui.label", arbol.getNode(i));
+        }
+
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void cb_mod_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_mod_perfilActionPerformed
+        // TODO add your handling code here:
+        cb_mod_raza.setModel(this.cb_add_raza.getModel());
+        this.perfilModificar=(Perfil)this.cb_mod_perfil.getSelectedItem();
+        this.tf_mod_nombre.setEnabled(true);
+        this.ta_mod_obs.setEnabled(true);
+        this.cb_mod_raza.setEnabled(true);
+        this.rb_mod_femenino.setEnabled(true);
+        this.rb_mod_masculino.setEnabled(true);
+        this.dc_mod_Fnacimiento.setEnabled(true);
+        this.tf_mod_nombre.setText(perfilModificar.getNombre());
+        this.ta_mod_obs.setText(perfilModificar.getObs());
+        this.cb_mod_raza.setSelectedItem(perfilModificar.getRaza());
+        if (perfilModificar.getGenero().equals("Femenino")) {
+            this.rb_mod_femenino.setSelected(true);
+        }else{
+            this.rb_mod_masculino.setSelected(true);
+        }
+        this.dc_mod_Fnacimiento.setDate(perfilModificar.getFechaNacimiento());
+    }//GEN-LAST:event_cb_mod_perfilActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < perfiles.size(); i++) {
+            if (perfiles.get(i)==perfilModificar) {
+                perfiles.remove(i);
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        for (int i = 0; i < perfiles.size(); i++) {
+            if (perfiles.get(i)==perfilModificar) {
+                perfiles.get(i).setNombre(this.tf_mod_nombre.getText());
+                perfiles.get(i).setObs(this.ta_mod_obs.getText());
+                perfiles.get(i).setFechaNacimiento(this.dc_mod_Fnacimiento.getDate());
+                perfiles.get(i).setRaza(this.cb_mod_raza.getSelectedItem().toString());
+                if (this.rb_mod_femenino.isSelected()) {
+                    perfiles.get(i).setGenero("Femenino");
+                }else{
+                    perfiles.get(i).setGenero("Masculino");
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void bt_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_addActionPerformed
+        // TODO add your handling code here:
+        String genero;
+        if (this.rb_add_femenino.isSelected()) {
+            genero="Femenino";
+        }else{
+            genero="Masculino";
+        }
+        Perfil nuevo=new Perfil(this.tf_add_nombre.getText(),this.cb_add_raza.getSelectedItem().toString(),genero,this.dc_add_Fnacimiento.getDate(),
+            this.ta_add_obs.getText());
+        perfiles.add(nuevo);
+        JOptionPane.showMessageDialog(this,"Agregado");
+        this.tf_add_nombre.setText("");
+        this.ta_add_obs.setText("");
+        this.dc_add_Fnacimiento.setDate(null);
+        this.cb_add_raza.setSelectedIndex(0);
+        this.rb_add_masculino.setSelected(true);
+        jd_mapaMental.pack();
+        jd_mapaMental.setLocationRelativeTo(this);
+        jd_mapaMental.setVisible(true);
+        //showDialog(this.jd_mapaMental);
+    }//GEN-LAST:event_bt_addActionPerformed
+
+    private void jPanel10ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel10ComponentShown
+        // TODO add your handling code here:
+         DefaultComboBoxModel modelo=new DefaultComboBoxModel();
+        for (int i = 0; i < perfiles.size(); i++) {
+            modelo.addElement(perfiles.get(i));
+        }
+        this.cb_arbol_padre.setModel(modelo);
+    }//GEN-LAST:event_jPanel10ComponentShown
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
     static void showDialog(JDialog d){
         
         d.setLocationRelativeTo(null);
@@ -1509,9 +1639,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton bt_add;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JComboBox<String> cb_add_palabra1;
     private javax.swing.JComboBox<String> cb_add_palabra2;
     private javax.swing.JComboBox<String> cb_add_raza;
+    private javax.swing.JComboBox<String> cb_arbol_hijo;
+    private javax.swing.JComboBox<String> cb_arbol_padre;
     private javax.swing.JComboBox<String> cb_dt_destino;
     private javax.swing.JComboBox<String> cb_dt_mapa;
     private javax.swing.JComboBox<String> cb_dt_origen;
@@ -1525,12 +1658,15 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dc_add_Fnacimiento;
     private com.toedter.calendar.JDateChooser dc_mod_Fnacimiento;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1557,6 +1693,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1564,10 +1702,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -1617,4 +1755,5 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     Perfil perfilEliminar;
     Graph grafoEliminar;
     String idEliminar;
+    Graph arbol=new SingleGraph("Arbol genealogico");
 }
